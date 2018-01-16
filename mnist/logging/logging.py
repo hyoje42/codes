@@ -15,12 +15,11 @@ model = 'oversample'
 
 import logging
 
-logging.basicConfig(level=logging.DEBUG, filename='./test.log')
+#logging.basicConfig(level=logging.DEBUG, filename='./test.log')
 
-logging.debug("debugging log")
+#logging.debug("debugging log")
 
 logger = logging.getLogger('mylogger')
-
 fileHandler = logging.FileHandler('./myLoggerTest_{}.log'.format(model))
 streamHandler = logging.StreamHandler()
 
