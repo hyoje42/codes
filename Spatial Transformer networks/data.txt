@@ -1,0 +1,1 @@
+https://github.com/MasazI/Spatial_Transformer_Network/blob/master/mnist_cluttered_60x60_6distortions.npz
