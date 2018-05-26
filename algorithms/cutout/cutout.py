@@ -1,4 +1,5 @@
-# python cutout.py -g 1 -s exp -d cifar10 -b 128 -e 2 -cs 16 -c True
+# python cutout.py -g 1 -s cifar10_cutout -d cifar10 -b 128 -e 2 -cs 8 --cutout
+# python cutout.py -g 1 -s cifar100_baseline -d cifar100 -b 128 -e 2
 
 import tensorflow as tf
 import numpy as np
@@ -35,7 +36,7 @@ def parse_args():
                         default=1, type=int)
     
     parser.add_argument('-c', '--cutout', dest='is_cutout', help='whether cutout or not',
-                        default=False, type=bool)
+                        action='store_true')
     args = parser.parse_args()
     
     return args    
@@ -260,8 +261,10 @@ if __name__ == '__main__':
         
         # cutout
         if args.is_cutout:
+            logger.info('with cutout')
             trX_cutout = cutout.act(trX)
         else:
+            logger.info('without cutout')
             trX_cutout = trX
         
         idxs = np.random.permutation(range(len(trX)))
